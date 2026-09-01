@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BGCTUB Robotics Club â€“ Member Registration Form</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@500;600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #543d6b;
+      font-family: 'Rajdhani', 'Roboto', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 10px;
+    }
+
+    /* â”€â”€â”€ A4 PAGE â”€â”€â”€ */
+    .page {
+      width: 210mm;
+      height: 297mm;
+      background: #f6f1fc;
+      position: relative;
+      box-shadow: 0 8px 36px rgba(0,0,0,0.4);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+       FORM HALF
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+    .form-section {
+      flex: 1;
+      background: #f6f1fc;
+      padding: 22px 28px 18px;
+      border: 3px solid #26004d;
+      position: relative;
+    }
+
+    /* Circuit corner brackets */
+    .corner {
+      position: absolute;
+      width: 55px; height: 55px;
+      border-color: #26004d;
+      border-style: solid;
+    }
+    .corner.tl { top:  7px; left:  7px; border-width: 3px 0 0 3px; }
+    .corner.tr { top:  7px; right: 7px; border-width: 3px 3px 0 0; }
+    .corner.bl { bottom: 7px; left:  7px; border-width: 0 0 3px 3px; }
+    .corner.br { bottom: 7px; right: 7px; border-width: 0 3px 3px 0; }
+
+    /* ── Layer 0: Hex grid SVG background ── */
+    .hex-bg {
+      position: absolute; inset: 0; z-index: 0;
+      opacity: 0.12; pointer-events: none;
+      background-color: transparent;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='48'%3E%3Cpath d='M14 0 L28 8 L28 24 L14 32 L0 24 L0 8 Z' fill='none' stroke='%237700cc' stroke-width='0.9'/%3E%3Cpath d='M14 32 L28 40 L28 56 L14 64 L0 56 L0 40 Z' fill='none' stroke='%237700cc' stroke-width='0.9'/%3E%3C/svg%3E");
+      background-size: 28px 48px;
+    }
+
+    /* ── Layer 0: Binary watermark ── */
+    .binary-mark {
+      position: absolute; inset: 0; z-index: 0;
+      opacity: 0.038; pointer-events: none;
+      font-family: 'Share Tech Mono', 'Consolas', monospace;
+      font-size: 7.5pt; color: #6600bb;
+      line-height: 1.6; word-break: break-all;
+      padding: 6px;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    /* ── Layer 1: Robotics Logo Watermark (Floats on top of Hex Grid & Binary) ── */
+    .watermark {
+      position: absolute;
+      top: 52%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 280px;
+      height: 280px;
+      opacity: 0.14;
+      pointer-events: none;
+      z-index: 1;
+      user-select: none;
+    }
+    .watermark img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* ── Header ── */
+    .header {
+      display: grid;
+      grid-template-columns: 82px 1fr 82px;
+      align-items: center;
+      margin-bottom: 14px;
+      position: relative; z-index: 2;
+    }
+
+    .logo-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .logo-wrap img {
+      width: 82px; height: 82px;
+      object-fit: contain; display: block;
+    }
+
+    .club-title {
+      text-align: center;
+    }
+    .club-title h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 38pt;
+      font-weight: 900;
+      color: #26004d;
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+    .club-title h2 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 13pt;
+      font-weight: 600;
+      color: #26004d;
+      letter-spacing: 8px;
+      margin-top: 2px;
+    }
+
+    /* ── Banner ── */
+    .banner-wrap {
+      display: flex;
+      align-items: center;
+      margin-bottom: 18px;
+      position: relative; z-index: 2;
+    }
+    .banner-line {
+      flex: 1;
+      height: 2px;
+      background: #26004d;
+      position: relative;
+    }
+    .banner-line::before {
+      content: '';
+      position: absolute;
+      top: -4px;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #26004d;
+    }
+    .banner-line.left::before  { right: 0; }
+    .banner-line.right::before { left: 0; }
+    .form-title-banner {
+      background: #26004d;
+      color: #fff;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 12.5pt;
+      letter-spacing: 4px;
+      padding: 6px 28px;
+      white-space: nowrap;
+    }
+
+    /* ── Field rows ── */
+    .field-row {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 11px;
+      gap: 8px;
+      position: relative; z-index: 2;
+    }
+
+    .field-num {
+      width: 24px; height: 24px; min-width: 24px;
+      background: #26004d;
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 10.5pt;
+      margin-top: 3px;
+    }
+
+    .field-icon {
+      width: 24px; min-width: 24px;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 3px;
+    }
+    .field-icon svg { width: 20px; height: 20px; fill: #26004d; }
+
+    .field-label {
+      min-width: 115px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 11pt;
+      color: #26004d;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+    .field-label small {
+      font-size: 8pt; font-weight: 600;
+      letter-spacing: 0; text-transform: none;
+    }
+
+    .field-colon {
+      font-weight: 700; font-size: 13pt;
+      color: #26004d; margin-top: 2px;
+    }
+
+    .field-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .underline {
+      border: none;
+      border-bottom: 1.5px solid #26004d;
+      background: transparent;
+      width: 100%; height: 22px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 10pt; color: #26004d;
+      outline: none;
+    }
+    .underline:focus { border-bottom-color: #7700cc; }
+
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 12px;
+      align-items: center;
+      margin-top: 3px;
+    }
+    .checkbox-item {
+      display: flex; align-items: center; gap: 4px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600; font-size: 10pt; color: #26004d;
+    }
+    .checkbox-item input[type="checkbox"],
+    .checkbox-item input[type="radio"] {
+      width: 13px; height: 13px;
+      accent-color: #26004d; cursor: pointer;
+    }
+
+    /* â•â• CUT LINE â•â• */
+    .cut-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 14px;
+      background: #f6f1fc;
+      border-left: 3px solid #26004d;
+      border-right: 3px solid #26004d;
+    }
+    .cut-icon { font-size: 13pt; color: #26004d; }
+    .cut-dash { flex: 1; border-top: 2px dashed #26004d; }
+    .cut-text {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 8.5pt;
+      color: #26004d; letter-spacing: 3px;
+    }
+
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+       RECEIPT HALF
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+    .receipt-section {
+      background: #f6f1fc;
+      padding: 18px 28px 18px;
+      border: 3px solid #26004d;
+      border-top: none;
+      position: relative;
+    }
+
+    .receipt-top {
+      display: grid;
+      grid-template-columns: 76px 1fr 76px;
+      align-items: center;
+      margin-bottom: 12px;
+      position: relative; z-index: 2;
+    }
+
+    .receipt-logo-wrap img {
+      width: 76px; height: 76px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .receipt-titles { text-align: center; }
+    .receipt-club-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 16pt; font-weight: 900;
+      color: #26004d; letter-spacing: 1.5px;
+    }
+
+    /* receipt banner with circuit lines */
+    .receipt-banner-wrap {
+      display: flex; align-items: center;
+      margin-top: 5px;
+    }
+    .receipt-banner-line {
+      flex: 1; height: 2px;
+      background: #26004d;
+      position: relative;
+    }
+    .receipt-banner-line::before {
+      content: '';
+      position: absolute; top: -3px;
+      width: 6px; height: 6px;
+      border-radius: 50%; background: #26004d;
+    }
+    .receipt-banner-line.left::before  { right: 0; }
+    .receipt-banner-line.right::before { left: 0; }
+    .receipt-banner {
+      background: #26004d; color: #fff;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 9.5pt;
+      letter-spacing: 3px;
+      padding: 4px 22px;
+      white-space: nowrap;
+    }
+
+    /* QR row */
+    .qr-row {
+      display: flex;
+      justify-content: center;
+      gap: 36px;
+      margin-bottom: 14px;
+      position: relative; z-index: 2;
+    }
+    .qr-card {
+      border: 2px solid #26004d;
+      padding: 0 12px 8px;
+      text-align: center;
+      background: #fff;
+      width: 136px;
+    }
+    .qr-card-title {
+      background: #26004d; color: #fff;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 7.5pt;
+      letter-spacing: 1.5px; padding: 3px 4px;
+      margin: 0 -12px 7px;
+    }
+    .qr-img {
+      width: 100px; height: 100px;
+      object-fit: contain;
+      display: block;
+      margin: 6px auto;
+      border: 1px solid #ddd;
+    }
+    .qr-card-desc {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 7pt; color: #26004d;
+      line-height: 1.3; margin-top: 4px;
+    }
+
+    /* Receipt fields */
+    .receipt-field {
+      display: flex; align-items: center;
+      gap: 8px; margin-bottom: 7px;
+      position: relative; z-index: 2;
+    }
+    .receipt-field-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 10pt;
+      color: #26004d; letter-spacing: 1px;
+      text-transform: uppercase; min-width: 80px;
+    }
+    .receipt-field-colon {
+      font-weight: 700; font-size: 12pt; color: #26004d;
+    }
+    .receipt-underline {
+      flex: 1; border: none;
+      border-bottom: 1.5px solid #26004d;
+      background: transparent; height: 20px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 10pt; color: #26004d; outline: none;
+    }
+
+    /* â”€â”€ Signature row â”€â”€ */
+    .sig-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 14px;
+      padding-top: 0;
+    }
+
+    .sig-block {
+      flex: 1;
+      text-align: center;
+      padding: 0 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .sig-block:not(:last-child) {
+      border-right: 1.5px solid #26004d;
+    }
+
+    /* The blank signature space */
+    .sig-space {
+      width: 100%;
+      height: 52px;
+      border-bottom: 1.5px solid #26004d;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .sig-img {
+      max-height: 48px;
+      max-width: 90%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .sig-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 9pt;
+      color: #26004d; line-height: 1.3;
+    }
+    .sig-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600; font-size: 8.5pt;
+      color: #4a0077;
+    }
+
+    /* horizontal rule above sig section */
+    .sig-separator {
+      border: none;
+      border-top: 1.5px solid #26004d;
+      margin: 14px 0 0;
+    }
+
+    /* Vision / Mission strip */
+    .vm-strip {
+      display: flex;
+      margin-top: 14px;
+      gap: 12px;
+    }
+    .vm-box {
+      flex: 1;
+      border: 1.5px solid #26004d;
+      padding: 5px 10px;
+    }
+    .vm-box-title {
+      background: #26004d; color: #fff;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 7.5pt;
+      letter-spacing: 2px; text-align: center;
+      padding: 2px 0;
+      margin: -5px -10px 5px;
+    }
+    .vm-box p {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 7.5pt; color: #26004d;
+      text-align: center; line-height: 1.4;
+    }
+
+    /* â”€â”€ Print â”€â”€ */
+    @page {
+      size: A4 portrait;
+      margin: 0mm;
+    }
+    @media print {
+      html, body {
+        width: 210mm; height: 297mm;
+        margin: 0 !important; padding: 0 !important;
+        background: none !important; overflow: hidden;
+      }
+      body { display: block !important; }
+      .print-btn-wrap { display: none !important; }
+      .page {
+        width: 210mm !important; height: 297mm !important;
+        box-shadow: none !important; margin: 0 !important;
+        page-break-after: avoid; break-after: avoid;
+        overflow: hidden !important;
+      }
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+       REGISTRATION FORM
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  <div class="form-section">
+    <div class="hex-bg"></div>
+    <div class="binary-mark"></div>
+    <div class="corner tl"></div><div class="corner tr"></div>
+    <div class="corner bl"></div><div class="corner br"></div>
+
+    <!-- Background Watermark -->
+    <div class="watermark">
+      <img src="BGCTUB_Robotics_Logo01.png" alt="Robotics Watermark"/>
+    </div>
+
+    <!-- Header: Logo + Club Title -->
+    <div class="header">
+      <div class="logo-wrap">
+        <img src="BGCTUB_Robotics_Logo01.png" alt="BGCTUB Robotics Club Logo"/>
+      </div>
+      <div class="club-title">
+        <h1>BGCTUB</h1>
+        <h2>ROBOTICS CLUB</h2>
+      </div>
+      <div></div><!-- spacer: balances logo so title is truly centered -->
+    </div>
+
+    <!-- Form Title Banner -->
+    <div class="banner-wrap">
+      <div class="banner-line left"></div>
+      <div class="form-title-banner">MEMBER REGISTRATION FORM</div>
+      <div class="banner-line right"></div>
+    </div>
+
+    <!-- 1. Name -->
+    <div class="field-row">
+      <div class="field-num">1</div>
+      <div class="field-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+      </div>
+      <div class="field-label">Name</div>
+      <div class="field-colon">:</div>
+      <div class="field-content">
+        <input class="underline" type="text" autocomplete="off"/>
+      </div>
+    </div>
+
+    <!-- 2. Student ID -->
+    <div class="field-row">
+      <div class="field-num">2</div>
+      <div class="field-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM6 10h2v2H6zm0 4h2v2H6zm4-4h8v2h-8zm0 4h5v2h-5z"/></svg>
+      </div>
+      <div class="field-label">Student ID</div>
+      <div class="field-colon">:</div>
+      <div class="field-content">
+        <input class="underline" type="text" autocomplete="off"/>
+      </div>
+    </div>
+
+    <!-- 3. Semester -->
+    <div class="field-row">
+      <div class="field-num">3</div>
+      <div class="field-icon">
+        <svg viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+      </div>
+      <div class="field-label">Semester</div>
+      <div class="field-colon">:</div>
+      <div class="field-content">
+        <div class="checkbox-group">
+          <label class="checkbox-item"><input type="checkbox" name="sem"/> 1st</label>
+          <label class="checkbox-item"><input type="checkbox" name="sem"/> 2nd</label>
+          <label class="checkbox-item"><input type="checkbox" name="sem"/> 3rd</label>
+          <label class="checkbox-item"><input type="checkbox" name="sem"/> 4th</label>
+          <label class="checkbox-item"><input type="checkbox" name="sem"/> 5th</label>
+          <label class="checkbox-item"><input type="checkbox" name="sem"/> 6th</label>
+          <label class="checkbox-item"><input type="checkbox" name="sem"/> 7th</label>
+          <label class="checkbox-item"><input type="checkbox" name="sem"/> 8th</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Contact -->
+    <div class="field-row">
+      <div class="field-num">4</div>
+      <div class="field-icon">
+        <svg viewBox="0 0 24 24"><path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.174-.3-.019-.465.13-.615.136-.135.301-.345.451-.523.146-.181.194-.301.297-.496.1-.21.049-.375-.025-.524-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.172-.015-.371-.015-.571-.015-.2 0-.523.074-.797.359-.273.3-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.195 2.105 3.195 5.1 4.485.714.3 1.27.48 1.704.629.714.227 1.365.195 1.88.121.574-.091 1.767-.721 2.016-1.426.255-.705.255-1.29.18-1.425-.074-.135-.27-.21-.57-.345zM20.52 3.449C12.831-3.984.106 1.407.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652C8.07 23.409 9.93 23.88 12 23.88c11.499 0 16.862-13.851 8.52-20.43z"/></svg>
+      </div>
+      <div class="field-label">Contact <small>(WhatsApp)</small></div>
+      <div class="field-colon">:</div>
+      <div class="field-content">
+        <input class="underline" type="tel" autocomplete="off"/>
+      </div>
+    </div>
+
+    <!-- 5. Gender -->
+    <div class="field-row">
+      <div class="field-num">5</div>
+      <div class="field-icon">
+        <svg viewBox="0 0 24 24"><path d="M11 7.5c0 2.5 2 4.5 4.5 4.5S20 10 20 7.5 18 3 15.5 3 11 5 11 7.5zm7 0c0 1.4-1.1 2.5-2.5 2.5S13 8.9 13 7.5 14.1 5 15.5 5 18 6.1 18 7.5zM6 13c-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3-1.3-3-3-3zm0 4.5c-.8 0-1.5-.7-1.5-1.5S5.2 14.5 6 14.5s1.5.7 1.5 1.5S6.8 17.5 6 17.5zM20 17v-4h-1.5v4h-3V18.5h3V22H20v-3.5h3V17z"/></svg>
+      </div>
+      <div class="field-label">Gender</div>
+      <div class="field-colon">:</div>
+      <div class="field-content">
+        <div class="checkbox-group">
+          <label class="checkbox-item"><input type="radio" name="gender"/> Male</label>
+          <label class="checkbox-item"><input type="radio" name="gender"/> Female</label>
+          <label class="checkbox-item"><input type="radio" name="gender"/> Other</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Experience -->
+    <div class="field-row" style="align-items:flex-start;">
+      <div class="field-num" style="margin-top:3px;">6</div>
+      <div class="field-icon" style="margin-top:3px;">
+        <svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.36C18 2.05 15.96 0 13.5 0c-1.3 0-2.45.52-3.29 1.36L10 1.57l-.21-.21C8.95.52 7.8 0 6.5 0 4.04 0 2 2.05 2 4.5c0 .48.11.92.18 1.36H0v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM11 20H2v-5h9v5zm0-7H2V8h9v5zm9 7h-7v-5h7v5zm0-7h-7V8h7v5z"/></svg>
+      </div>
+      <div class="field-label">Experience</div>
+      <div class="field-colon">:</div>
+      <div class="field-content">
+        <input class="underline" type="text" autocomplete="off"/>
+        <input class="underline" type="text" autocomplete="off" style="margin-top:9px;"/>
+      </div>
+    </div>
+
+    <!-- 7. Signature -->
+    <div class="field-row">
+      <div class="field-num">7</div>
+      <div class="field-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+      </div>
+      <div class="field-label">Signature</div>
+      <div class="field-colon">:</div>
+      <div class="field-content">
+        <input class="underline" type="text" autocomplete="off"/>
+      </div>
+    </div>
+
+  </div><!-- /form-section -->
+
+  <!-- â•â• CUT LINE â•â• -->
+  <div class="cut-line">
+    <span class="cut-icon">âœ‚</span>
+    <div class="cut-dash"></div>
+    <span class="cut-text">CUT HERE</span>
+    <div class="cut-dash"></div>
+  </div>
+
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+       RECEIPT
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  <div class="receipt-section">
+    <div class="hex-bg"></div>
+    <div class="binary-mark"></div>
+    <div class="corner tl"></div><div class="corner tr"></div>
+    <div class="corner bl"></div><div class="corner br"></div>
+
+    <!-- Background Watermark -->
+    <div class="watermark">
+      <img src="BGCTUB_Robotics_Logo01.png" alt="Robotics Watermark"/>
+    </div>
+
+    <!-- Receipt header -->
+    <div class="receipt-top">
+      <div class="receipt-logo-wrap">
+        <img src="BGCTUB_Robotics_Logo01.png" alt="BGCTUB Robotics Club Logo"/>
+      </div>
+      <div class="receipt-titles">
+        <div class="receipt-club-name">BGCTUB ROBOTICS CLUB</div>
+        <div class="receipt-banner-wrap">
+          <div class="receipt-banner-line left"></div>
+          <div class="receipt-banner">MEMBER REGISTRATION RECEIPT</div>
+          <div class="receipt-banner-line right"></div>
+        </div>
+      </div>
+      <div></div><!-- spacer: balances logo for perfect centering -->
+    </div>
+
+    <!-- QR Codes -->
+    <div class="qr-row">
+      <div class="qr-card">
+        <div class="qr-card-title">FACEBOOK GROUP</div>
+        <img class="qr-img" src="Facebook_QR.jpeg" alt="Facebook Group QR Code"/>
+        <div class="qr-card-desc">Scan this QR code using the Facebook<br>camera to join this group</div>
+      </div>
+      <div class="qr-card">
+        <div class="qr-card-title">WHATSAPP GROUP</div>
+        <img class="qr-img" src="WhatsApp_QR.jpeg" alt="WhatsApp Group QR Code"/>
+        <div class="qr-card-desc">Scan this QR code using the WhatsApp<br>camera to join this group</div>
+      </div>
+    </div>
+
+    <!-- Name & Student ID -->
+    <div class="receipt-field">
+      <div class="receipt-field-label">Name</div>
+      <div class="receipt-field-colon">:</div>
+      <input class="receipt-underline" type="text" autocomplete="off"/>
+    </div>
+    <div class="receipt-field">
+      <div class="receipt-field-label">Student ID</div>
+      <div class="receipt-field-colon">:</div>
+      <input class="receipt-underline" type="text" autocomplete="off"/>
+    </div>
+
+    <!-- â”€â”€ Officials Signature Section â”€â”€ -->
+    <hr class="sig-separator"/>
+
+    <div class="sig-row">
+
+      <!-- President -->
+      <div class="sig-block">
+        <div class="sig-space">
+          <img class="sig-img" src="ahad_sign.png" alt="Md. Tahmidul Alam Ahad Signature"/>
+        </div>
+        <div class="sig-name">Md. Tahmidul Alam Ahad</div>
+        <div class="sig-title">President</div>
+      </div>
+
+      <!-- Vice President -->
+      <div class="sig-block">
+        <div class="sig-space">
+          <img class="sig-img" src="tareq_sign.png" alt="Mohammad Tareq Aziz Signature"/>
+        </div>
+        <div class="sig-name">Mohammad Tareq Aziz</div>
+        <div class="sig-title">Vice President</div>
+      </div>
+
+      <!-- General Secretary -->
+      <div class="sig-block">
+        <div class="sig-space">
+          <img class="sig-img" src="mainul_sign.png" alt="Md. Matnul Hoque Signature"/>
+        </div>
+        <div class="sig-name">Md. Matnul Hoque</div>
+        <div class="sig-title">General Secretary</div>
+      </div>
+
+    </div>
+
+    <!-- Vision / Mission -->
+    <div class="vm-strip">
+      <div class="vm-box">
+        <div class="vm-box-title">VISION:</div>
+        <p>Learn. Innovate. Compete. Lead.</p>
+      </div>
+      <div class="vm-box">
+        <div class="vm-box-title">MISSION:</div>
+        <p>Empowering students to learn through practice, innovate through technology, and create impact through collaboration.</p>
+      </div>
+    </div>
+
+  </div><!-- /receipt-section -->
+
+</div><!-- /page -->
+
+<!-- Print button (hidden on print) -->
+<div class="print-btn-wrap" style="margin-top:20px; text-align:center;">
+  <button onclick="window.print()"
+    style="background:#26004d; color:#fff; border:none; padding:11px 36px;
+           font-family:'Rajdhani',sans-serif; font-size:12pt; font-weight:700;
+           letter-spacing:2px; cursor:pointer; border-radius:5px;
+           box-shadow:0 4px 14px rgba(26,0,102,0.35);">
+    ðŸ–¨ï¸ PRINT / SAVE AS PDF
+  </button>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.binary-mark').forEach(el => {
+    let txt = '';
+    for (let i = 0; i < 700; i++) txt += (Math.random() > 0.5 ? '1' : '0') + (i % 38 === 37 ? ' ' : '');
+    el.textContent = txt;
+  });
+});
+</script>
+
+</body>
+</html>
