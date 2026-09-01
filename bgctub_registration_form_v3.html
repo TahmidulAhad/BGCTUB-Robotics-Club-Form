@@ -1,37 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>BGCTUB Robotics Club â€“ Member Registration Form</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;900&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;900&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     /* â”€â”€ Fallback font stacks (work even offline) â”€â”€ */
     :root {
-      --f-tech:   'Orbitron', 'Exo 2', 'Arial Black', Impact, sans-serif;
-      --f-body:   'Rajdhani', 'Trebuchet MS', 'Segoe UI', Arial, sans-serif;
-      --f-mono:   'Share Tech Mono', 'Consolas', 'Courier New', monospace;
-      --deep:   #110022;
-      --dark:   #2a0055;
-      --mid:    #6600bb;
+      --f-tech: 'Orbitron', 'Exo 2', 'Arial Black', Impact, sans-serif;
+      --f-body: 'Rajdhani', 'Trebuchet MS', 'Segoe UI', Arial, sans-serif;
+      --f-mono: 'Share Tech Mono', 'Consolas', 'Courier New', monospace;
+      --deep: #110022;
+      --dark: #2a0055;
+      --mid: #6600bb;
       --bright: #aa00dd;
-      --neon:   #dd00ff;
-      --blue:   #00ccff;
-      --cyan:   #00ffee;
-      --bg:     #f0e8ff;
+      --neon: #dd00ff;
+      --blue: #00ccff;
+      --cyan: #00ffee;
+      --bg: #f0e8ff;
       --border: #8800cc;
-      --line:   #cc44ff;
+      --line: #cc44ff;
     }
 
     body {
       background: radial-gradient(ellipse at 50% 30%, #6600bb 0%, #1a0035 50%, #0a0015 100%);
       font-family: var(--f-body);
-      display: flex; flex-direction: column;
-      align-items: center; padding: 24px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 10px;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
@@ -40,20 +51,26 @@
        A4 PAGE
     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
     .page {
-      width: 210mm; height: 297mm;
-      display: flex; flex-direction: column;
-      overflow: hidden; position: relative;
+      width: 210mm;
+      height: 297mm;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
       box-shadow:
         0 0 0 1px var(--border),
-        0 0 30px rgba(180,0,255,0.6),
-        0 0 80px rgba(180,0,255,0.25),
-        0 16px 60px rgba(0,0,0,0.7);
+        0 0 30px rgba(180, 0, 255, 0.6),
+        0 0 80px rgba(180, 0, 255, 0.25),
+        0 16px 60px rgba(0, 0, 0, 0.7);
     }
 
     /* â”€â”€â”€ Hex grid SVG background (shared by both sections) â”€â”€â”€ */
     .hex-bg {
-      position: absolute; inset: 0; z-index: 0;
-      opacity: 0.18; pointer-events: none;
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.18;
+      pointer-events: none;
       background-color: transparent;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='48'%3E%3Cpath d='M14 0 L28 8 L28 24 L14 32 L0 24 L0 8 Z' fill='none' stroke='%238800cc' stroke-width='0.8'/%3E%3Cpath d='M14 32 L28 40 L28 56 L14 64 L0 56 L0 40 Z' fill='none' stroke='%238800cc' stroke-width='0.8'/%3E%3C/svg%3E");
       background-size: 28px 48px;
@@ -61,47 +78,96 @@
 
     /* â”€â”€â”€ Binary watermark â”€â”€â”€ */
     .binary-mark {
-      position: absolute; inset: 0; z-index: 0;
-      opacity: 0.04; pointer-events: none;
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.04;
+      pointer-events: none;
       font-family: var(--f-mono);
-      font-size: 7pt; color: var(--neon);
-      line-height: 1.6; word-break: break-all;
+      font-size: 7pt;
+      color: var(--neon);
+      line-height: 1.6;
+      word-break: break-all;
       padding: 4px;
       overflow: hidden;
     }
 
     /* â”€â”€â”€ Left/Right circuit rail â”€â”€â”€ */
     .rail {
-      position: absolute; top: 0; bottom: 0;
-      width: 14px; z-index: 1; pointer-events: none;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 14px;
+      z-index: 1;
+      pointer-events: none;
     }
-    .rail.left  { left: 0; }
-    .rail.right { right: 0; transform: scaleX(-1); }
-    .rail svg   { width: 14px; height: 100%; }
+
+    .rail.left {
+      left: 0;
+    }
+
+    .rail.right {
+      right: 0;
+      transform: scaleX(-1);
+    }
+
+    .rail svg {
+      width: 14px;
+      height: 100%;
+    }
 
     /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        FORM SECTION
     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
     .form-section {
-      flex: 1; min-height: 0;
-      display: flex; flex-direction: column;
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
       background: var(--bg);
       border: 2px solid var(--border);
-      position: relative; overflow: hidden;
+      position: relative;
+      overflow: hidden;
     }
+
     .form-inner {
-      flex: 1; min-height: 0;
-      display: flex; flex-direction: column;
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
       padding: 11px 26px 9px 26px;
-      position: relative; z-index: 2;
+      position: relative;
+      z-index: 2;
     }
 
     /* â”€â”€â”€ Circuit corner â”€â”€â”€ */
-    .cc { position: absolute; z-index: 3; }
-    .cc.tl { top: 0; left: 0; }
-    .cc.tr { top: 0; right: 0; transform: scaleX(-1); }
-    .cc.bl { bottom: 0; left: 0; transform: scaleY(-1); }
-    .cc.br { bottom: 0; right: 0; transform: scale(-1,-1); }
+    .cc {
+      position: absolute;
+      z-index: 3;
+    }
+
+    .cc.tl {
+      top: 0;
+      left: 0;
+    }
+
+    .cc.tr {
+      top: 0;
+      right: 0;
+      transform: scaleX(-1);
+    }
+
+    .cc.bl {
+      bottom: 0;
+      left: 0;
+      transform: scaleY(-1);
+    }
+
+    .cc.br {
+      bottom: 0;
+      right: 0;
+      transform: scale(-1, -1);
+    }
 
     /* â”€â”€â”€ Tech header strip â”€â”€â”€ */
     .tech-strip {
@@ -109,19 +175,29 @@
       background: linear-gradient(90deg, var(--deep) 0%, #3d006b 50%, var(--deep) 100%);
       border-bottom: 1px solid var(--line);
       padding: 2px 26px;
-      display: flex; align-items: center; justify-content: space-between;
-      position: relative; z-index: 4;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 4;
     }
+
     .tech-strip span {
       font-family: var(--f-mono);
-      font-size: 6pt; color: var(--cyan);
-      letter-spacing: 1px; opacity: 0.85;
+      font-size: 6pt;
+      color: var(--cyan);
+      letter-spacing: 1px;
+      opacity: 0.85;
     }
+
     .tech-dot {
-      width: 5px; height: 5px; border-radius: 50%;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
       background: var(--neon);
       box-shadow: 0 0 4px var(--neon);
-      display: inline-block; margin: 0 3px;
+      display: inline-block;
+      margin: 0 3px;
     }
 
     /* â”€â”€â”€ Header â”€â”€â”€ */
@@ -129,126 +205,250 @@
       display: grid;
       grid-template-columns: 72px 1fr 72px;
       align-items: center;
-      margin-bottom: 6px; flex-shrink: 0;
+      margin-bottom: 6px;
+      flex-shrink: 0;
     }
-    .logo-img { width: 72px; height: 72px; object-fit: contain; }
-    .title-cell { text-align: center; }
+
+    .logo-img {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+    }
+
+    .title-cell {
+      text-align: center;
+    }
+
     .title-cell h1 {
       font-family: var(--f-tech);
-      font-size: 27pt; font-weight: 900;
+      font-size: 27pt;
+      font-weight: 900;
       background: linear-gradient(135deg, #3300aa 0%, var(--mid) 35%, var(--neon) 70%, var(--blue) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text; letter-spacing: 3px; line-height: 1;
-      filter: drop-shadow(0 0 8px rgba(220,0,255,0.4));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 3px;
+      line-height: 1;
+      filter: drop-shadow(0 0 8px rgba(220, 0, 255, 0.4));
     }
+
     .title-cell h2 {
-      font-family: var(--f-tech); font-size: 7.5pt; font-weight: 600;
-      color: var(--mid); letter-spacing: 8px; margin-top: 3px;
+      font-family: var(--f-tech);
+      font-size: 7.5pt;
+      font-weight: 600;
+      color: var(--mid);
+      letter-spacing: 8px;
+      margin-top: 3px;
     }
 
     /* â”€â”€â”€ Form banner â”€â”€â”€ */
     .form-banner {
-      flex-shrink: 0; margin-bottom: 7px;
-      display: flex; align-items: center;
+      flex-shrink: 0;
+      margin-bottom: 7px;
+      display: flex;
+      align-items: center;
     }
+
     .fb-line {
-      flex: 1; height: 1.5px;
+      flex: 1;
+      height: 1.5px;
       background: linear-gradient(90deg, transparent, var(--mid), var(--neon));
       position: relative;
     }
+
     .fb-line::after {
-      content: ''; position: absolute; right: -1px; top: -4px;
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--neon); box-shadow: 0 0 6px var(--neon);
+      content: '';
+      position: absolute;
+      right: -1px;
+      top: -4px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--neon);
+      box-shadow: 0 0 6px var(--neon);
     }
+
     .fb-line.r {
       background: linear-gradient(90deg, var(--neon), var(--mid), transparent);
     }
-    .fb-line.r::after { right: auto; left: -1px; }
+
+    .fb-line.r::after {
+      right: auto;
+      left: -1px;
+    }
+
     .fb-text {
       background: linear-gradient(90deg, var(--deep) 0%, #44009a 50%, var(--deep) 100%);
-      color: #fff; font-family: var(--f-tech);
-      font-size: 8.5pt; font-weight: 700;
-      letter-spacing: 4px; padding: 5px 20px;
+      color: #fff;
+      font-family: var(--f-tech);
+      font-size: 8.5pt;
+      font-weight: 700;
+      letter-spacing: 4px;
+      padding: 5px 20px;
       border: 1px solid var(--line);
       text-shadow: 0 0 12px var(--neon);
       position: relative;
     }
+
     /* scanline overlay on banner */
     .fb-text::after {
       content: '';
-      position: absolute; inset: 0;
-      background: repeating-linear-gradient(
-        0deg, transparent, transparent 2px, rgba(255,255,255,0.04) 2px, rgba(255,255,255,0.04) 3px
-      );
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 255, 255, 0.04) 2px, rgba(255, 255, 255, 0.04) 3px);
       pointer-events: none;
     }
 
     /* â”€â”€â”€ Fields â”€â”€â”€ */
     .fields {
-      flex: 1; min-height: 0;
-      display: flex; flex-direction: column;
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
       justify-content: space-evenly;
     }
-    .field-row { display: flex; align-items: center; gap: 7px; }
-    .field-row.exp { align-items: flex-start; }
+
+    .field-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .field-row.exp {
+      align-items: flex-start;
+    }
 
     .fnum {
-      width: 21px; height: 21px; min-width: 21px;
+      width: 21px;
+      height: 21px;
+      min-width: 21px;
       background: linear-gradient(135deg, var(--mid), var(--neon));
-      color: #fff; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--f-tech); font-weight: 700; font-size: 7.5pt;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--f-tech);
+      font-weight: 700;
+      font-size: 7.5pt;
       box-shadow: 0 0 8px var(--neon), 0 0 2px var(--neon) inset;
       flex-shrink: 0;
     }
-    .ficon { width: 18px; min-width: 18px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .ficon svg { width: 16px; height: 16px; fill: var(--mid); }
+
+    .ficon {
+      width: 18px;
+      min-width: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .ficon svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--mid);
+    }
 
     .flabel {
-      min-width: 105px; font-family: var(--f-body);
-      font-weight: 700; font-size: 8.8pt; color: var(--dark);
-      letter-spacing: 1.5px; text-transform: uppercase; flex-shrink: 0;
+      min-width: 105px;
+      font-family: var(--f-body);
+      font-weight: 700;
+      font-size: 8.8pt;
+      color: var(--dark);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      flex-shrink: 0;
     }
-    .flabel small { font-size: 6pt; font-weight: 600; letter-spacing: 0; text-transform: none; color: var(--mid); }
-    .fcolon { font-weight: 700; font-size: 11pt; color: var(--mid); flex-shrink: 0; }
-    .fcontent { flex: 1; display: flex; flex-direction: column; }
+
+    .flabel small {
+      font-size: 6pt;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--mid);
+    }
+
+    .fcolon {
+      font-weight: 700;
+      font-size: 11pt;
+      color: var(--mid);
+      flex-shrink: 0;
+    }
+
+    .fcontent {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
 
     /* Terminal-style underline input */
     .uline {
       border: none;
       border-bottom: 1.5px solid var(--border);
-      background: transparent; width: 100%; height: 18px;
-      font-family: var(--f-mono); font-size: 8.5pt;
-      color: var(--dark); outline: none;
-    }
-    .uline + .uline { margin-top: 7px; }
-    .uline:focus {
-      border-bottom-color: var(--neon);
-      box-shadow: 0 2px 0 -1px rgba(221,0,255,0.3);
+      background: transparent;
+      width: 100%;
+      height: 18px;
+      font-family: var(--f-mono);
+      font-size: 8.5pt;
+      color: var(--dark);
+      outline: none;
     }
 
-    .chk-grp { display: flex; flex-wrap: wrap; gap: 2px 9px; align-items: center; }
-    .chk-item {
-      display: flex; align-items: center; gap: 3px;
-      font-family: var(--f-mono);
-      font-size: 7.5pt; color: var(--dark);
+    .uline+.uline {
+      margin-top: 7px;
     }
-    .chk-item input { width: 11px; height: 11px; accent-color: var(--neon); cursor: pointer; }
+
+    .uline:focus {
+      border-bottom-color: var(--neon);
+      box-shadow: 0 2px 0 -1px rgba(221, 0, 255, 0.3);
+    }
+
+    .chk-grp {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px 9px;
+      align-items: center;
+    }
+
+    .chk-item {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      font-family: var(--f-mono);
+      font-size: 7.5pt;
+      color: var(--dark);
+    }
+
+    .chk-item input {
+      width: 11px;
+      height: 11px;
+      accent-color: var(--neon);
+      cursor: pointer;
+    }
 
     /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        CUT LINE
     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
     .cut-line {
       flex-shrink: 0;
-      display: flex; align-items: center; gap: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
       padding: 4px 14px;
       background: linear-gradient(90deg, var(--deep), #220040, var(--deep));
       border-left: 2px solid var(--border);
       border-right: 2px solid var(--border);
-      position: relative; z-index: 5;
+      position: relative;
+      z-index: 5;
     }
-    .cut-icon { font-size: 11pt; color: var(--neon); filter: drop-shadow(0 0 4px var(--neon)); }
+
+    .cut-icon {
+      font-size: 11pt;
+      color: var(--neon);
+      filter: drop-shadow(0 0 4px var(--neon));
+    }
+
     .cut-dash {
       flex: 1;
       border-top: 1.5px dashed var(--line);
@@ -257,9 +457,13 @@
       background-size: 14px 0;
       background-position: 7px 50%;
     }
+
     .cut-txt {
-      font-family: var(--f-tech); font-weight: 700;
-      font-size: 6pt; color: var(--cyan); letter-spacing: 5px;
+      font-family: var(--f-tech);
+      font-weight: 700;
+      font-size: 6pt;
+      color: var(--cyan);
+      letter-spacing: 5px;
       text-shadow: 0 0 6px var(--cyan);
     }
 
@@ -267,18 +471,25 @@
        RECEIPT SECTION
     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
     .receipt-section {
-      flex: 1; min-height: 0;
-      display: flex; flex-direction: column;
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
       border: 2px solid var(--border);
       border-top: none;
-      position: relative; overflow: hidden;
+      position: relative;
+      overflow: hidden;
       background: var(--bg);
     }
+
     .receipt-inner {
-      flex: 1; min-height: 0;
-      display: flex; flex-direction: column;
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
       padding: 9px 26px 9px 26px;
-      position: relative; z-index: 2;
+      position: relative;
+      z-index: 2;
     }
 
     /* â”€â”€â”€ Receipt header â”€â”€â”€ */
@@ -286,466 +497,713 @@
       display: grid;
       grid-template-columns: 62px 1fr 62px;
       align-items: center;
-      flex-shrink: 0; margin-bottom: 7px;
+      flex-shrink: 0;
+      margin-bottom: 7px;
     }
-    .r-logo-img { width: 62px; height: 62px; object-fit: contain; }
-    .r-title { text-align: center; }
+
+    .r-logo-img {
+      width: 62px;
+      height: 62px;
+      object-fit: contain;
+    }
+
+    .r-title {
+      text-align: center;
+    }
+
     .r-club-name {
-      font-family: var(--f-tech); font-size: 12pt; font-weight: 900;
+      font-family: var(--f-tech);
+      font-size: 12pt;
+      font-weight: 900;
       background: linear-gradient(135deg, #3300aa, var(--mid) 40%, var(--neon) 75%, var(--blue));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text; letter-spacing: 2px;
-      filter: drop-shadow(0 0 6px rgba(220,0,255,0.35));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 2px;
+      filter: drop-shadow(0 0 6px rgba(220, 0, 255, 0.35));
     }
-    .r-banner-wrap { display: flex; align-items: center; margin-top: 4px; }
+
+    .r-banner-wrap {
+      display: flex;
+      align-items: center;
+      margin-top: 4px;
+    }
+
     .r-bline {
-      flex: 1; height: 1.5px;
+      flex: 1;
+      height: 1.5px;
       background: linear-gradient(90deg, transparent, var(--mid), var(--neon));
       position: relative;
     }
+
     .r-bline::after {
-      content: ''; position: absolute; right: -1px; top: -3.5px;
-      width: 7px; height: 7px; border-radius: 50%;
-      background: var(--neon); box-shadow: 0 0 5px var(--neon);
+      content: '';
+      position: absolute;
+      right: -1px;
+      top: -3.5px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--neon);
+      box-shadow: 0 0 5px var(--neon);
     }
-    .r-bline.r { background: linear-gradient(90deg, var(--neon), var(--mid), transparent); }
-    .r-bline.r::after { right: auto; left: -1px; }
+
+    .r-bline.r {
+      background: linear-gradient(90deg, var(--neon), var(--mid), transparent);
+    }
+
+    .r-bline.r::after {
+      right: auto;
+      left: -1px;
+    }
+
     .r-banner {
       background: linear-gradient(90deg, var(--deep), #44009a 50%, var(--deep));
-      color: #fff; font-family: var(--f-tech);
-      font-weight: 700; font-size: 6.5pt; letter-spacing: 3px;
-      padding: 3px 14px; border: 1px solid var(--line);
+      color: #fff;
+      font-family: var(--f-tech);
+      font-weight: 700;
+      font-size: 6.5pt;
+      letter-spacing: 3px;
+      padding: 3px 14px;
+      border: 1px solid var(--line);
       text-shadow: 0 0 8px var(--neon);
-      position: relative; overflow: hidden;
+      position: relative;
+      overflow: hidden;
     }
+
     .r-banner::after {
       content: '';
-      position: absolute; inset: 0;
-      background: repeating-linear-gradient(
-        0deg, transparent, transparent 2px, rgba(255,255,255,0.04) 2px, rgba(255,255,255,0.04) 3px
-      );
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 255, 255, 0.04) 2px, rgba(255, 255, 255, 0.04) 3px);
     }
 
     /* â”€â”€â”€ Receipt body â”€â”€â”€ */
     .r-body {
-      flex: 1; min-height: 0;
-      display: flex; flex-direction: column;
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
       justify-content: space-between;
       gap: 0;
     }
 
     /* â”€â”€â”€ QR row â”€â”€â”€ */
-    .qr-row { flex-shrink: 0; display: flex; justify-content: center; gap: 28px; }
-    .qr-card {
-      width: 122px; background: #fff;
-      border: 1.5px solid var(--border); border-radius: 4px;
-      overflow: hidden;
-      box-shadow: 0 0 10px rgba(170,0,220,0.2), inset 0 0 8px rgba(170,0,220,0.05);
+    .qr-row {
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      gap: 28px;
     }
+
+    .qr-card {
+      width: 122px;
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(170, 0, 220, 0.2), inset 0 0 8px rgba(170, 0, 220, 0.05);
+    }
+
     .qr-head {
       background: linear-gradient(90deg, var(--deep), var(--mid));
-      color: #fff; font-family: var(--f-tech);
-      font-weight: 700; font-size: 6pt; letter-spacing: 2px;
-      padding: 3px 6px; text-align: center;
+      color: #fff;
+      font-family: var(--f-tech);
+      font-weight: 700;
+      font-size: 6pt;
+      letter-spacing: 2px;
+      padding: 3px 6px;
+      text-align: center;
       text-shadow: 0 0 6px var(--neon);
     }
-    .qr-body { padding: 5px 8px 4px; text-align: center; }
-    .qr-img { width: 80px; height: 80px; object-fit: contain; display: block; margin: 0 auto 3px; }
-    .qr-desc { font-family: var(--f-body); font-size: 6pt; color: #666; line-height: 1.3; }
+
+    .qr-body {
+      padding: 5px 8px 4px;
+      text-align: center;
+    }
+
+    .qr-img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 3px;
+    }
+
+    .qr-desc {
+      font-family: var(--f-body);
+      font-size: 6pt;
+      color: #666;
+      line-height: 1.3;
+    }
 
     /* â”€â”€â”€ Name / ID â”€â”€â”€ */
-    .r-fields { flex-shrink: 0; }
-    .r-field { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
-    .r-flabel {
-      font-family: var(--f-body); font-weight: 700;
-      font-size: 8.5pt; color: var(--dark); letter-spacing: 1px;
-      text-transform: uppercase; min-width: 70px; flex-shrink: 0;
+    .r-fields {
+      flex-shrink: 0;
     }
-    .r-fcolon { font-weight: 700; font-size: 11pt; color: var(--mid); flex-shrink: 0; }
+
+    .r-field {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .r-flabel {
+      font-family: var(--f-body);
+      font-weight: 700;
+      font-size: 8.5pt;
+      color: var(--dark);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      min-width: 70px;
+      flex-shrink: 0;
+    }
+
+    .r-fcolon {
+      font-weight: 700;
+      font-size: 11pt;
+      color: var(--mid);
+      flex-shrink: 0;
+    }
+
     .r-uline {
-      flex: 1; border: none; border-bottom: 1.5px solid var(--border);
-      background: transparent; height: 17px;
-      font-family: var(--f-mono); font-size: 8.5pt;
-      color: var(--dark); outline: none;
+      flex: 1;
+      border: none;
+      border-bottom: 1.5px solid var(--border);
+      background: transparent;
+      height: 17px;
+      font-family: var(--f-mono);
+      font-size: 8.5pt;
+      color: var(--dark);
+      outline: none;
     }
 
     /* â”€â”€â”€ Signature block â”€â”€â”€ */
-    .sig-sep { border: none; border-top: 1.5px solid var(--border); flex-shrink: 0; }
-    .sig-row { flex-shrink: 0; display: flex; }
+    .sig-sep {
+      border: none;
+      border-top: 1.5px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .sig-row {
+      flex-shrink: 0;
+      display: flex;
+    }
+
     .sig-block {
-      flex: 1; text-align: center;
+      flex: 1;
+      text-align: center;
       padding: 6px 8px 5px;
-      display: flex; flex-direction: column; align-items: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .sig-block:not(:last-child) { border-right: 1.5px solid var(--line); }
+
+    .sig-block:not(:last-child) {
+      border-right: 1.5px solid var(--line);
+    }
+
     .sig-space {
-      width: 80%; height: 42px;
-      border-bottom: 1.5px solid var(--border); margin-bottom: 5px;
-      display: flex; align-items: center; justify-content: center;
-      background-image: repeating-linear-gradient(
-        transparent, transparent 13px, rgba(136,0,204,0.08) 13px, rgba(136,0,204,0.08) 14px
-      );
+      width: 80%;
+      height: 42px;
+      border-bottom: 1.5px solid var(--border);
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image: repeating-linear-gradient(transparent, transparent 13px, rgba(136, 0, 204, 0.08) 13px, rgba(136, 0, 204, 0.08) 14px);
     }
+
     .sig-img {
       max-height: 38px;
       max-width: 90%;
       object-fit: contain;
       display: block;
     }
+
     .sig-name {
-      font-family: var(--f-body); font-weight: 700;
-      font-size: 8pt; color: var(--dark); line-height: 1.2;
+      font-family: var(--f-body);
+      font-weight: 700;
+      font-size: 8pt;
+      color: var(--dark);
+      line-height: 1.2;
     }
+
     .sig-title {
-      font-family: var(--f-tech); font-weight: 600;
-      font-size: 6.5pt; color: var(--mid);
+      font-family: var(--f-tech);
+      font-weight: 600;
+      font-size: 6.5pt;
+      color: var(--mid);
     }
 
     /* â”€â”€â”€ Vision / Mission â”€â”€â”€ */
-    .vm-strip { flex-shrink: 0; display: flex; gap: 10px; }
-    .vm-box {
-      flex: 1; border: 1.5px solid var(--border);
-      border-radius: 3px; overflow: hidden;
-      box-shadow: 0 0 8px rgba(136,0,204,0.15), inset 0 0 12px rgba(136,0,204,0.05);
+    .vm-strip {
+      flex-shrink: 0;
+      display: flex;
+      gap: 10px;
     }
+
+    .vm-box {
+      flex: 1;
+      border: 1.5px solid var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+      box-shadow: 0 0 8px rgba(136, 0, 204, 0.15), inset 0 0 12px rgba(136, 0, 204, 0.05);
+    }
+
     .vm-title {
       background: linear-gradient(90deg, var(--deep), var(--mid));
-      color: #fff; font-family: var(--f-tech);
-      font-weight: 700; font-size: 6pt; letter-spacing: 3px;
-      text-align: center; padding: 3px 0;
+      color: #fff;
+      font-family: var(--f-tech);
+      font-weight: 700;
+      font-size: 6pt;
+      letter-spacing: 3px;
+      text-align: center;
+      padding: 3px 0;
       text-shadow: 0 0 8px var(--neon);
     }
-    .vm-content { padding: 4px 8px; background: rgba(255,255,255,0.65); }
+
+    .vm-content {
+      padding: 4px 8px;
+      background: rgba(255, 255, 255, 0.65);
+    }
+
     .vm-content p {
-      font-family: var(--f-body); font-size: 7pt;
-      color: var(--dark); text-align: center; line-height: 1.4;
+      font-family: var(--f-body);
+      font-size: 7pt;
+      color: var(--dark);
+      text-align: center;
+      line-height: 1.4;
     }
 
     /* â”€â”€â”€ Print â”€â”€â”€ */
-    @page { size: A4 portrait; margin: 0mm; }
+    @page {
+      size: A4 portrait;
+      margin: 0mm;
+    }
+
     @media print {
-      html, body {
-        width: 210mm; height: 297mm;
-        margin: 0 !important; padding: 0 !important;
-        background: none !important; overflow: hidden;
+
+      html,
+      body {
+        width: 210mm;
+        height: 297mm;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: none !important;
+        overflow: hidden;
       }
-      body { display: block !important; }
-      .print-btn-wrap { display: none !important; }
+
+      body {
+        display: block !important;
+      }
+
+      .print-btn-wrap {
+        display: none !important;
+      }
+
       .page {
-        width: 210mm !important; height: 297mm !important;
-        box-shadow: none !important; margin: 0 !important;
-        page-break-after: avoid; break-after: avoid;
+        width: 210mm !important;
+        height: 297mm !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        page-break-after: avoid;
+        break-after: avoid;
         overflow: hidden !important;
       }
-      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<!-- Binary watermark text generator -->
-<script>
-window.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.binary-mark').forEach(el => {
-    let txt = '';
-    for (let i = 0; i < 600; i++) txt += (Math.random() > 0.5 ? '1' : '0') + (i % 40 === 39 ? ' ' : '');
-    el.textContent = txt;
-  });
-});
-</script>
+  <!-- Binary watermark text generator -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.binary-mark').forEach(el => {
+        let txt = '';
+        for (let i = 0; i < 600; i++) txt += (Math.random() > 0.5 ? '1' : '0') + (i % 40 === 39 ? ' ' : '');
+        el.textContent = txt;
+      });
+    });
+  </script>
 
-<div class="page">
+  <div class="page">
 
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        SECTION 1 : FORM
   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
-  <div class="form-section">
-    <!-- Hex grid + binary watermark -->
-    <div class="hex-bg"></div>
-    <div class="binary-mark"></div>
+    <div class="form-section">
+      <!-- Hex grid + binary watermark -->
+      <div class="hex-bg"></div>
+      <div class="binary-mark"></div>
 
-    <!-- Circuit corners -->
-    <div class="cc tl"><svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="0" width="2.5" height="42" fill="#6600bb"/>
-      <rect x="0" y="0" width="42" height="2.5" fill="#6600bb"/>
-      <path d="M2.5 22 L2.5 30 L12 30 L12 18 L22 18" stroke="#aa00dd" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-      <path d="M2.5 10 L18 10 L18 2.5" stroke="#aa00dd" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-      <path d="M30 2.5 L30 8 L38 8" stroke="#00ccff" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-      <circle cx="12" cy="30" r="2.5" fill="#dd00ff"/>
-      <circle cx="22" cy="18" r="2" fill="#dd00ff"/>
-      <circle cx="18" cy="10" r="2" fill="#00ccff"/>
-      <circle cx="38" cy="8" r="2" fill="#00ccff"/>
-      <rect cx="30" cy="2.5" x="28" y="0.5" width="4" height="4" fill="#00ffee"/>
-    </svg></div>
+      <!-- Circuit corners -->
+      <div class="cc tl"><svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="2.5" height="42" fill="#6600bb" />
+          <rect x="0" y="0" width="42" height="2.5" fill="#6600bb" />
+          <path d="M2.5 22 L2.5 30 L12 30 L12 18 L22 18" stroke="#aa00dd" stroke-width="1.8" fill="none"
+            stroke-linecap="round" />
+          <path d="M2.5 10 L18 10 L18 2.5" stroke="#aa00dd" stroke-width="1.8" fill="none" stroke-linecap="round" />
+          <path d="M30 2.5 L30 8 L38 8" stroke="#00ccff" stroke-width="1.4" fill="none" stroke-linecap="round" />
+          <circle cx="12" cy="30" r="2.5" fill="#dd00ff" />
+          <circle cx="22" cy="18" r="2" fill="#dd00ff" />
+          <circle cx="18" cy="10" r="2" fill="#00ccff" />
+          <circle cx="38" cy="8" r="2" fill="#00ccff" />
+          <rect cx="30" cy="2.5" x="28" y="0.5" width="4" height="4" fill="#00ffee" />
+        </svg></div>
 
-    <div class="cc tr"><svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="0" width="2.5" height="42" fill="#6600bb"/>
-      <rect x="0" y="0" width="42" height="2.5" fill="#6600bb"/>
-      <path d="M2.5 22 L2.5 30 L12 30 L12 18 L22 18" stroke="#aa00dd" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-      <path d="M2.5 10 L18 10 L18 2.5" stroke="#aa00dd" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-      <path d="M30 2.5 L30 8 L38 8" stroke="#00ccff" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-      <circle cx="12" cy="30" r="2.5" fill="#dd00ff"/>
-      <circle cx="22" cy="18" r="2" fill="#dd00ff"/>
-      <circle cx="18" cy="10" r="2" fill="#00ccff"/>
-      <circle cx="38" cy="8" r="2" fill="#00ccff"/>
-      <rect cx="30" cy="2.5" x="28" y="0.5" width="4" height="4" fill="#00ffee"/>
-    </svg></div>
+      <div class="cc tr"><svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="2.5" height="42" fill="#6600bb" />
+          <rect x="0" y="0" width="42" height="2.5" fill="#6600bb" />
+          <path d="M2.5 22 L2.5 30 L12 30 L12 18 L22 18" stroke="#aa00dd" stroke-width="1.8" fill="none"
+            stroke-linecap="round" />
+          <path d="M2.5 10 L18 10 L18 2.5" stroke="#aa00dd" stroke-width="1.8" fill="none" stroke-linecap="round" />
+          <path d="M30 2.5 L30 8 L38 8" stroke="#00ccff" stroke-width="1.4" fill="none" stroke-linecap="round" />
+          <circle cx="12" cy="30" r="2.5" fill="#dd00ff" />
+          <circle cx="22" cy="18" r="2" fill="#dd00ff" />
+          <circle cx="18" cy="10" r="2" fill="#00ccff" />
+          <circle cx="38" cy="8" r="2" fill="#00ccff" />
+          <rect cx="30" cy="2.5" x="28" y="0.5" width="4" height="4" fill="#00ffee" />
+        </svg></div>
 
-    <div class="cc bl"><svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="0" width="2.5" height="42" fill="#6600bb"/>
-      <rect x="0" y="0" width="42" height="2.5" fill="#6600bb"/>
-      <path d="M2.5 22 L2.5 30 L12 30 L12 18 L22 18" stroke="#aa00dd" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-      <path d="M2.5 10 L18 10 L18 2.5" stroke="#aa00dd" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-      <path d="M30 2.5 L30 8 L38 8" stroke="#00ccff" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-      <circle cx="12" cy="30" r="2.5" fill="#dd00ff"/>
-      <circle cx="22" cy="18" r="2" fill="#dd00ff"/>
-      <circle cx="18" cy="10" r="2" fill="#00ccff"/>
-      <circle cx="38" cy="8" r="2" fill="#00ccff"/>
-      <rect cx="30" cy="2.5" x="28" y="0.5" width="4" height="4" fill="#00ffee"/>
-    </svg></div>
+      <div class="cc bl"><svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="2.5" height="42" fill="#6600bb" />
+          <rect x="0" y="0" width="42" height="2.5" fill="#6600bb" />
+          <path d="M2.5 22 L2.5 30 L12 30 L12 18 L22 18" stroke="#aa00dd" stroke-width="1.8" fill="none"
+            stroke-linecap="round" />
+          <path d="M2.5 10 L18 10 L18 2.5" stroke="#aa00dd" stroke-width="1.8" fill="none" stroke-linecap="round" />
+          <path d="M30 2.5 L30 8 L38 8" stroke="#00ccff" stroke-width="1.4" fill="none" stroke-linecap="round" />
+          <circle cx="12" cy="30" r="2.5" fill="#dd00ff" />
+          <circle cx="22" cy="18" r="2" fill="#dd00ff" />
+          <circle cx="18" cy="10" r="2" fill="#00ccff" />
+          <circle cx="38" cy="8" r="2" fill="#00ccff" />
+          <rect cx="30" cy="2.5" x="28" y="0.5" width="4" height="4" fill="#00ffee" />
+        </svg></div>
 
-    <div class="cc br"><svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="0" width="2.5" height="42" fill="#6600bb"/>
-      <rect x="0" y="0" width="42" height="2.5" fill="#6600bb"/>
-      <path d="M2.5 22 L2.5 30 L12 30 L12 18 L22 18" stroke="#aa00dd" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-      <path d="M2.5 10 L18 10 L18 2.5" stroke="#aa00dd" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-      <path d="M30 2.5 L30 8 L38 8" stroke="#00ccff" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-      <circle cx="12" cy="30" r="2.5" fill="#dd00ff"/>
-      <circle cx="22" cy="18" r="2" fill="#dd00ff"/>
-      <circle cx="18" cy="10" r="2" fill="#00ccff"/>
-      <circle cx="38" cy="8" r="2" fill="#00ccff"/>
-      <rect cx="30" cy="2.5" x="28" y="0.5" width="4" height="4" fill="#00ffee"/>
-    </svg></div>
+      <div class="cc br"><svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="2.5" height="42" fill="#6600bb" />
+          <rect x="0" y="0" width="42" height="2.5" fill="#6600bb" />
+          <path d="M2.5 22 L2.5 30 L12 30 L12 18 L22 18" stroke="#aa00dd" stroke-width="1.8" fill="none"
+            stroke-linecap="round" />
+          <path d="M2.5 10 L18 10 L18 2.5" stroke="#aa00dd" stroke-width="1.8" fill="none" stroke-linecap="round" />
+          <path d="M30 2.5 L30 8 L38 8" stroke="#00ccff" stroke-width="1.4" fill="none" stroke-linecap="round" />
+          <circle cx="12" cy="30" r="2.5" fill="#dd00ff" />
+          <circle cx="22" cy="18" r="2" fill="#dd00ff" />
+          <circle cx="18" cy="10" r="2" fill="#00ccff" />
+          <circle cx="38" cy="8" r="2" fill="#00ccff" />
+          <rect cx="30" cy="2.5" x="28" y="0.5" width="4" height="4" fill="#00ffee" />
+        </svg></div>
 
-    <!-- Tech header strip -->
-    <div class="tech-strip">
-      <span>SYS:BGCTUB-RC &nbsp;// &nbsp;FORM-REG-v2.4</span>
-      <span><span class="tech-dot"></span><span class="tech-dot" style="background:var(--blue);box-shadow:0 0 4px var(--blue)"></span><span class="tech-dot" style="background:var(--cyan);box-shadow:0 0 4px var(--cyan)"></span></span>
-      <span>STATUS: ACTIVE &nbsp;// &nbsp;INPUT READY</span>
-    </div>
-
-    <div class="form-inner">
-      <!-- Header -->
-      <div class="header">
-        <div><img class="logo-img" src="BGCTUB_Robotics_Logo01.png" alt="Logo"/></div>
-        <div class="title-cell"><h1>BGCTUB</h1><h2>ROBOTICS &nbsp; CLUB</h2></div>
-        <div></div>
+      <!-- Tech header strip -->
+      <div class="tech-strip">
+        <span>SYS:BGCTUB-RC &nbsp;// &nbsp;FORM-REG-v2.4</span>
+        <span><span class="tech-dot"></span><span class="tech-dot"
+            style="background:var(--blue);box-shadow:0 0 4px var(--blue)"></span><span class="tech-dot"
+            style="background:var(--cyan);box-shadow:0 0 4px var(--cyan)"></span></span>
+        <span>STATUS: ACTIVE &nbsp;// &nbsp;INPUT READY</span>
       </div>
 
-      <!-- Banner -->
-      <div class="form-banner">
-        <div class="fb-line"></div>
-        <div class="fb-text">MEMBER REGISTRATION FORM</div>
-        <div class="fb-line r"></div>
-      </div>
+      <div class="form-inner">
+        <!-- Header -->
+        <div class="header">
+          <div><img class="logo-img" src="BGCTUB_Robotics_Logo01.png" alt="Logo" /></div>
+          <div class="title-cell">
+            <h1>BGCTUB</h1>
+            <h2>ROBOTICS &nbsp; CLUB</h2>
+          </div>
+          <div></div>
+        </div>
 
-      <!-- Fields -->
-      <div class="fields">
-        <div class="field-row">
-          <div class="fnum">1</div>
-          <div class="ficon"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div>
-          <div class="flabel">Name</div>
-          <div class="fcolon">:</div>
-          <div class="fcontent"><input class="uline" type="text"/></div>
+        <!-- Banner -->
+        <div class="form-banner">
+          <div class="fb-line"></div>
+          <div class="fb-text">MEMBER REGISTRATION FORM</div>
+          <div class="fb-line r"></div>
         </div>
-        <div class="field-row">
-          <div class="fnum">2</div>
-          <div class="ficon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM6 10h2v2H6zm0 4h2v2H6zm4-4h8v2h-8zm0 4h5v2h-5z"/></svg></div>
-          <div class="flabel">Student ID</div>
-          <div class="fcolon">:</div>
-          <div class="fcontent"><input class="uline" type="text"/></div>
-        </div>
-        <div class="field-row">
-          <div class="fnum">3</div>
-          <div class="ficon"><svg viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg></div>
-          <div class="flabel">Semester</div>
-          <div class="fcolon">:</div>
-          <div class="fcontent">
-            <div class="chk-grp">
-              <label class="chk-item"><input type="checkbox" name="sem"/> 1st</label>
-              <label class="chk-item"><input type="checkbox" name="sem"/> 2nd</label>
-              <label class="chk-item"><input type="checkbox" name="sem"/> 3rd</label>
-              <label class="chk-item"><input type="checkbox" name="sem"/> 4th</label>
-              <label class="chk-item"><input type="checkbox" name="sem"/> 5th</label>
-              <label class="chk-item"><input type="checkbox" name="sem"/> 6th</label>
-              <label class="chk-item"><input type="checkbox" name="sem"/> 7th</label>
-              <label class="chk-item"><input type="checkbox" name="sem"/> 8th</label>
+
+        <!-- Fields -->
+        <div class="fields">
+          <div class="field-row">
+            <div class="fnum">1</div>
+            <div class="ficon"><svg viewBox="0 0 24 24">
+                <path
+                  d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
+              </svg></div>
+            <div class="flabel">Name</div>
+            <div class="fcolon">:</div>
+            <div class="fcontent"><input class="uline" type="text" /></div>
+          </div>
+          <div class="field-row">
+            <div class="fnum">2</div>
+            <div class="ficon"><svg viewBox="0 0 24 24">
+                <path
+                  d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM6 10h2v2H6zm0 4h2v2H6zm4-4h8v2h-8zm0 4h5v2h-5z" />
+              </svg></div>
+            <div class="flabel">Student ID</div>
+            <div class="fcolon">:</div>
+            <div class="fcontent"><input class="uline" type="text" /></div>
+          </div>
+          <div class="field-row">
+            <div class="fnum">3</div>
+            <div class="ficon"><svg viewBox="0 0 24 24">
+                <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
+              </svg></div>
+            <div class="flabel">Semester</div>
+            <div class="fcolon">:</div>
+            <div class="fcontent">
+              <div class="chk-grp">
+                <label class="chk-item"><input type="checkbox" name="sem" /> 1st</label>
+                <label class="chk-item"><input type="checkbox" name="sem" /> 2nd</label>
+                <label class="chk-item"><input type="checkbox" name="sem" /> 3rd</label>
+                <label class="chk-item"><input type="checkbox" name="sem" /> 4th</label>
+                <label class="chk-item"><input type="checkbox" name="sem" /> 5th</label>
+                <label class="chk-item"><input type="checkbox" name="sem" /> 6th</label>
+                <label class="chk-item"><input type="checkbox" name="sem" /> 7th</label>
+                <label class="chk-item"><input type="checkbox" name="sem" /> 8th</label>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="field-row">
-          <div class="fnum">4</div>
-          <div class="ficon"><svg viewBox="0 0 24 24"><path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.174-.3-.019-.465.13-.615.136-.135.301-.345.451-.523.146-.181.194-.301.297-.496.1-.21.049-.375-.025-.524-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.172-.015-.371-.015-.571-.015-.2 0-.523.074-.797.359-.273.3-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.195 2.105 3.195 5.1 4.485.714.3 1.27.48 1.704.629.714.227 1.365.195 1.88.121.574-.091 1.767-.721 2.016-1.426.255-.705.255-1.29.18-1.425-.074-.135-.27-.21-.57-.345zM20.52 3.449C12.831-3.984.106 1.407.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652C8.07 23.409 9.93 23.88 12 23.88c11.499 0 16.862-13.851 8.52-20.43z"/></svg></div>
-          <div class="flabel">Contact <small>(WhatsApp)</small></div>
-          <div class="fcolon">:</div>
-          <div class="fcontent"><input class="uline" type="tel"/></div>
-        </div>
-        <div class="field-row">
-          <div class="fnum">5</div>
-          <div class="ficon"><svg viewBox="0 0 24 24"><path d="M11 7.5C11 10 13 12 15.5 12S20 10 20 7.5 18 3 15.5 3 11 5 11 7.5zm7 0c0 1.4-1.1 2.5-2.5 2.5S13 8.9 13 7.5 14.1 5 15.5 5 18 6.1 18 7.5zM6 13c-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3-1.3-3-3-3zm0 4.5c-.8 0-1.5-.7-1.5-1.5S5.2 14.5 6 14.5s1.5.7 1.5 1.5S6.8 17.5 6 17.5zM20 17v-4h-1.5v4h-3V18.5h3V22H20v-3.5h3V17z"/></svg></div>
-          <div class="flabel">Gender</div>
-          <div class="fcolon">:</div>
-          <div class="fcontent">
-            <div class="chk-grp">
-              <label class="chk-item"><input type="radio" name="gender"/> Male</label>
-              <label class="chk-item"><input type="radio" name="gender"/> Female</label>
-              <label class="chk-item"><input type="radio" name="gender"/> Other</label>
+          <div class="field-row">
+            <div class="fnum">4</div>
+            <div class="ficon"><svg viewBox="0 0 24 24">
+                <path
+                  d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.174-.3-.019-.465.13-.615.136-.135.301-.345.451-.523.146-.181.194-.301.297-.496.1-.21.049-.375-.025-.524-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.172-.015-.371-.015-.571-.015-.2 0-.523.074-.797.359-.273.3-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.195 2.105 3.195 5.1 4.485.714.3 1.27.48 1.704.629.714.227 1.365.195 1.88.121.574-.091 1.767-.721 2.016-1.426.255-.705.255-1.29.18-1.425-.074-.135-.27-.21-.57-.345zM20.52 3.449C12.831-3.984.106 1.407.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652C8.07 23.409 9.93 23.88 12 23.88c11.499 0 16.862-13.851 8.52-20.43z" />
+              </svg></div>
+            <div class="flabel">Contact <small>(WhatsApp)</small></div>
+            <div class="fcolon">:</div>
+            <div class="fcontent"><input class="uline" type="tel" /></div>
+          </div>
+          <div class="field-row">
+            <div class="fnum">5</div>
+            <div class="ficon"><svg viewBox="0 0 24 24">
+                <path
+                  d="M11 7.5C11 10 13 12 15.5 12S20 10 20 7.5 18 3 15.5 3 11 5 11 7.5zm7 0c0 1.4-1.1 2.5-2.5 2.5S13 8.9 13 7.5 14.1 5 15.5 5 18 6.1 18 7.5zM6 13c-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3-1.3-3-3-3zm0 4.5c-.8 0-1.5-.7-1.5-1.5S5.2 14.5 6 14.5s1.5.7 1.5 1.5S6.8 17.5 6 17.5zM20 17v-4h-1.5v4h-3V18.5h3V22H20v-3.5h3V17z" />
+              </svg></div>
+            <div class="flabel">Gender</div>
+            <div class="fcolon">:</div>
+            <div class="fcontent">
+              <div class="chk-grp">
+                <label class="chk-item"><input type="radio" name="gender" /> Male</label>
+                <label class="chk-item"><input type="radio" name="gender" /> Female</label>
+                <label class="chk-item"><input type="radio" name="gender" /> Other</label>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="field-row exp">
-          <div class="fnum">6</div>
-          <div class="ficon"><svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.36C18 2.05 15.96 0 13.5 0c-1.3 0-2.45.52-3.29 1.36L10 1.57l-.21-.21C8.95.52 7.8 0 6.5 0 4.04 0 2 2.05 2 4.5c0 .48.11.92.18 1.36H0v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM11 20H2v-5h9v5zm0-7H2V8h9v5zm9 7h-7v-5h7v5zm0-7h-7V8h7v5z"/></svg></div>
-          <div class="flabel">Experience</div>
-          <div class="fcolon">:</div>
-          <div class="fcontent">
-            <input class="uline" type="text"/>
-            <input class="uline" type="text"/>
+          <div class="field-row exp">
+            <div class="fnum">6</div>
+            <div class="ficon"><svg viewBox="0 0 24 24">
+                <path
+                  d="M20 6h-2.18c.07-.44.18-.88.18-1.36C18 2.05 15.96 0 13.5 0c-1.3 0-2.45.52-3.29 1.36L10 1.57l-.21-.21C8.95.52 7.8 0 6.5 0 4.04 0 2 2.05 2 4.5c0 .48.11.92.18 1.36H0v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM11 20H2v-5h9v5zm0-7H2V8h9v5zm9 7h-7v-5h7v5zm0-7h-7V8h7v5z" />
+              </svg></div>
+            <div class="flabel">Experience</div>
+            <div class="fcolon">:</div>
+            <div class="fcontent">
+              <input class="uline" type="text" />
+              <input class="uline" type="text" />
+            </div>
           </div>
-        </div>
-        <div class="field-row">
-          <div class="fnum">7</div>
-          <div class="ficon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></div>
-          <div class="flabel">Signature</div>
-          <div class="fcolon">:</div>
-          <div class="fcontent"><input class="uline" type="text"/></div>
-        </div>
-      </div><!-- /fields -->
-    </div><!-- /form-inner -->
-  </div><!-- /form-section -->
+          <div class="field-row">
+            <div class="fnum">7</div>
+            <div class="ficon"><svg viewBox="0 0 24 24">
+                <path
+                  d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+              </svg></div>
+            <div class="flabel">Signature</div>
+            <div class="fcolon">:</div>
+            <div class="fcontent"><input class="uline" type="text" /></div>
+          </div>
+        </div><!-- /fields -->
+      </div><!-- /form-inner -->
+    </div><!-- /form-section -->
 
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        CUT LINE
   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
-  <div class="cut-line">
-    <span class="cut-icon">âœ‚</span>
-    <div class="cut-dash"></div>
-    <span class="cut-txt">â€” CUT HERE â€”</span>
-    <div class="cut-dash"></div>
-  </div>
+    <div class="cut-line">
+      <span class="cut-icon">âœ‚</span>
+      <div class="cut-dash"></div>
+      <span class="cut-txt">â€” CUT HERE â€”</span>
+      <div class="cut-dash"></div>
+    </div>
 
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        SECTION 2 : RECEIPT
   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
-  <div class="receipt-section">
-    <div class="hex-bg"></div>
-    <div class="binary-mark"></div>
+    <div class="receipt-section">
+      <div class="hex-bg"></div>
+      <div class="binary-mark"></div>
 
-    <!-- Circuit corners (same) -->
-    <div class="cc tl"><svg width="58" height="58" viewBox="0 0 58 58" fill="none"><rect x="0" y="0" width="2.5" height="42" fill="#6600bb"/><rect x="0" y="0" width="42" height="2.5" fill="#6600bb"/><path d="M2.5 22 L2.5 30 L12 30 L12 18 L22 18" stroke="#aa00dd" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M2.5 10 L18 10 L18 2.5" stroke="#aa00dd" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M30 2.5 L30 8 L38 8" stroke="#00ccff" stroke-width="1.4" fill="none" stroke-linecap="round"/><circle cx="12" cy="30" r="2.5" fill="#dd00ff"/><circle cx="22" cy="18" r="2" fill="#dd00ff"/><circle cx="18" cy="10" r="2" fill="#00ccff"/><circle cx="38" cy="8" r="2" fill="#00ccff"/></svg></div>
-    <div class="cc tr"><svg width="58" height="58" viewBox="0 0 58 58" fill="none"><rect x="0" y="0" width="2.5" height="42" fill="#6600bb"/><rect x="0" y="0" width="42" height="2.5" fill="#6600bb"/><path d="M2.5 22 L2.5 30 L12 30 L12 18 L22 18" stroke="#aa00dd" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M2.5 10 L18 10 L18 2.5" stroke="#aa00dd" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M30 2.5 L30 8 L38 8" stroke="#00ccff" stroke-width="1.4" fill="none" stroke-linecap="round"/><circle cx="12" cy="30" r="2.5" fill="#dd00ff"/><circle cx="22" cy="18" r="2" fill="#dd00ff"/><circle cx="18" cy="10" r="2" fill="#00ccff"/><circle cx="38" cy="8" r="2" fill="#00ccff"/></svg></div>
-    <div class="cc bl"><svg width="58" height="58" viewBox="0 0 58 58" fill="none"><rect x="0" y="0" width="2.5" height="42" fill="#6600bb"/><rect x="0" y="0" width="42" height="2.5" fill="#6600bb"/><path d="M2.5 22 L2.5 30 L12 30 L12 18 L22 18" stroke="#aa00dd" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M2.5 10 L18 10 L18 2.5" stroke="#aa00dd" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M30 2.5 L30 8 L38 8" stroke="#00ccff" stroke-width="1.4" fill="none" stroke-linecap="round"/><circle cx="12" cy="30" r="2.5" fill="#dd00ff"/><circle cx="22" cy="18" r="2" fill="#dd00ff"/><circle cx="18" cy="10" r="2" fill="#00ccff"/><circle cx="38" cy="8" r="2" fill="#00ccff"/></svg></div>
-    <div class="cc br"><svg width="58" height="58" viewBox="0 0 58 58" fill="none"><rect x="0" y="0" width="2.5" height="42" fill="#6600bb"/><rect x="0" y="0" width="42" height="2.5" fill="#6600bb"/><path d="M2.5 22 L2.5 30 L12 30 L12 18 L22 18" stroke="#aa00dd" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M2.5 10 L18 10 L18 2.5" stroke="#aa00dd" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M30 2.5 L30 8 L38 8" stroke="#00ccff" stroke-width="1.4" fill="none" stroke-linecap="round"/><circle cx="12" cy="30" r="2.5" fill="#dd00ff"/><circle cx="22" cy="18" r="2" fill="#dd00ff"/><circle cx="18" cy="10" r="2" fill="#00ccff"/><circle cx="38" cy="8" r="2" fill="#00ccff"/></svg></div>
+      <!-- Circuit corners (same) -->
+      <div class="cc tl"><svg width="58" height="58" viewBox="0 0 58 58" fill="none">
+          <rect x="0" y="0" width="2.5" height="42" fill="#6600bb" />
+          <rect x="0" y="0" width="42" height="2.5" fill="#6600bb" />
+          <path d="M2.5 22 L2.5 30 L12 30 L12 18 L22 18" stroke="#aa00dd" stroke-width="1.8" fill="none"
+            stroke-linecap="round" />
+          <path d="M2.5 10 L18 10 L18 2.5" stroke="#aa00dd" stroke-width="1.8" fill="none" stroke-linecap="round" />
+          <path d="M30 2.5 L30 8 L38 8" stroke="#00ccff" stroke-width="1.4" fill="none" stroke-linecap="round" />
+          <circle cx="12" cy="30" r="2.5" fill="#dd00ff" />
+          <circle cx="22" cy="18" r="2" fill="#dd00ff" />
+          <circle cx="18" cy="10" r="2" fill="#00ccff" />
+          <circle cx="38" cy="8" r="2" fill="#00ccff" />
+        </svg></div>
+      <div class="cc tr"><svg width="58" height="58" viewBox="0 0 58 58" fill="none">
+          <rect x="0" y="0" width="2.5" height="42" fill="#6600bb" />
+          <rect x="0" y="0" width="42" height="2.5" fill="#6600bb" />
+          <path d="M2.5 22 L2.5 30 L12 30 L12 18 L22 18" stroke="#aa00dd" stroke-width="1.8" fill="none"
+            stroke-linecap="round" />
+          <path d="M2.5 10 L18 10 L18 2.5" stroke="#aa00dd" stroke-width="1.8" fill="none" stroke-linecap="round" />
+          <path d="M30 2.5 L30 8 L38 8" stroke="#00ccff" stroke-width="1.4" fill="none" stroke-linecap="round" />
+          <circle cx="12" cy="30" r="2.5" fill="#dd00ff" />
+          <circle cx="22" cy="18" r="2" fill="#dd00ff" />
+          <circle cx="18" cy="10" r="2" fill="#00ccff" />
+          <circle cx="38" cy="8" r="2" fill="#00ccff" />
+        </svg></div>
+      <div class="cc bl"><svg width="58" height="58" viewBox="0 0 58 58" fill="none">
+          <rect x="0" y="0" width="2.5" height="42" fill="#6600bb" />
+          <rect x="0" y="0" width="42" height="2.5" fill="#6600bb" />
+          <path d="M2.5 22 L2.5 30 L12 30 L12 18 L22 18" stroke="#aa00dd" stroke-width="1.8" fill="none"
+            stroke-linecap="round" />
+          <path d="M2.5 10 L18 10 L18 2.5" stroke="#aa00dd" stroke-width="1.8" fill="none" stroke-linecap="round" />
+          <path d="M30 2.5 L30 8 L38 8" stroke="#00ccff" stroke-width="1.4" fill="none" stroke-linecap="round" />
+          <circle cx="12" cy="30" r="2.5" fill="#dd00ff" />
+          <circle cx="22" cy="18" r="2" fill="#dd00ff" />
+          <circle cx="18" cy="10" r="2" fill="#00ccff" />
+          <circle cx="38" cy="8" r="2" fill="#00ccff" />
+        </svg></div>
+      <div class="cc br"><svg width="58" height="58" viewBox="0 0 58 58" fill="none">
+          <rect x="0" y="0" width="2.5" height="42" fill="#6600bb" />
+          <rect x="0" y="0" width="42" height="2.5" fill="#6600bb" />
+          <path d="M2.5 22 L2.5 30 L12 30 L12 18 L22 18" stroke="#aa00dd" stroke-width="1.8" fill="none"
+            stroke-linecap="round" />
+          <path d="M2.5 10 L18 10 L18 2.5" stroke="#aa00dd" stroke-width="1.8" fill="none" stroke-linecap="round" />
+          <path d="M30 2.5 L30 8 L38 8" stroke="#00ccff" stroke-width="1.4" fill="none" stroke-linecap="round" />
+          <circle cx="12" cy="30" r="2.5" fill="#dd00ff" />
+          <circle cx="22" cy="18" r="2" fill="#dd00ff" />
+          <circle cx="18" cy="10" r="2" fill="#00ccff" />
+          <circle cx="38" cy="8" r="2" fill="#00ccff" />
+        </svg></div>
 
-    <div class="receipt-inner">
-      <!-- Receipt header -->
-      <div class="r-header">
-        <div><img class="r-logo-img" src="BGCTUB_Robotics_Logo01.png" alt="Logo"/></div>
-        <div class="r-title">
-          <div class="r-club-name">BGCTUB ROBOTICS CLUB</div>
-          <div class="r-banner-wrap">
-            <div class="r-bline"></div>
-            <div class="r-banner">MEMBER REGISTRATION RECEIPT</div>
-            <div class="r-bline r"></div>
-          </div>
-        </div>
-        <div></div>
-      </div>
-
-      <!-- Body -->
-      <div class="r-body">
-        <!-- QR -->
-        <div class="qr-row">
-          <div class="qr-card">
-            <div class="qr-head">FACEBOOK GROUP</div>
-            <div class="qr-body">
-              <img class="qr-img" src="Facebook_QR.jpeg" alt="Facebook QR"/>
-              <div class="qr-desc">Scan with Facebook camera<br>to join this group</div>
+      <div class="receipt-inner">
+        <!-- Receipt header -->
+        <div class="r-header">
+          <div><img class="r-logo-img" src="BGCTUB_Robotics_Logo01.png" alt="Logo" /></div>
+          <div class="r-title">
+            <div class="r-club-name">BGCTUB ROBOTICS CLUB</div>
+            <div class="r-banner-wrap">
+              <div class="r-bline"></div>
+              <div class="r-banner">MEMBER REGISTRATION RECEIPT</div>
+              <div class="r-bline r"></div>
             </div>
           </div>
-          <div class="qr-card">
-            <div class="qr-head">WHATSAPP GROUP</div>
-            <div class="qr-body">
-              <img class="qr-img" src="WhatsApp_QR.jpeg" alt="WhatsApp QR"/>
-              <div class="qr-desc">Scan with WhatsApp camera<br>to join this group</div>
-            </div>
-          </div>
+          <div></div>
         </div>
 
-        <!-- Name / ID -->
-        <div class="r-fields">
-          <div class="r-field">
-            <div class="r-flabel">Name</div>
-            <div class="r-fcolon">:</div>
-            <input class="r-uline" type="text"/>
-          </div>
-          <div class="r-field">
-            <div class="r-flabel">Student ID</div>
-            <div class="r-fcolon">:</div>
-            <input class="r-uline" type="text"/>
-          </div>
-        </div>
-
-        <!-- Signatures -->
-        <div>
-          <hr class="sig-sep"/>
-          <div class="sig-row">
-            <div class="sig-block">
-              <div class="sig-space">
-                <img class="sig-img" src="ahad_sign.png" alt="Md. Tahmidul Alam Ahad Signature"/>
+        <!-- Body -->
+        <div class="r-body">
+          <!-- QR -->
+          <div class="qr-row">
+            <div class="qr-card">
+              <div class="qr-head">FACEBOOK GROUP</div>
+              <div class="qr-body">
+                <img class="qr-img" src="Facebook_QR.jpeg" alt="Facebook QR" />
+                <div class="qr-desc">Scan with Facebook camera<br>to join this group</div>
               </div>
-              <div class="sig-name">Md. Tahmidul Alam Ahad</div>
-              <div class="sig-title">President</div>
             </div>
-            <div class="sig-block">
-              <div class="sig-space">
-                <img class="sig-img" src="tareq_sign.png" alt="Mohammad Tareq Aziz Signature"/>
+            <div class="qr-card">
+              <div class="qr-head">WHATSAPP GROUP</div>
+              <div class="qr-body">
+                <img class="qr-img" src="WhatsApp_QR.jpeg" alt="WhatsApp QR" />
+                <div class="qr-desc">Scan with WhatsApp camera<br>to join this group</div>
               </div>
-              <div class="sig-name">Mohammad Tareq Aziz</div>
-              <div class="sig-title">Vice President</div>
             </div>
-            <div class="sig-block">
-              <div class="sig-space">
-                <img class="sig-img" src="mainul_sign.png" alt="Md. Matnul Hoque Signature"/>
+          </div>
+
+          <!-- Name / ID -->
+          <div class="r-fields">
+            <div class="r-field">
+              <div class="r-flabel">Name</div>
+              <div class="r-fcolon">:</div>
+              <input class="r-uline" type="text" />
+            </div>
+            <div class="r-field">
+              <div class="r-flabel">Student ID</div>
+              <div class="r-fcolon">:</div>
+              <input class="r-uline" type="text" />
+            </div>
+          </div>
+
+          <!-- Signatures -->
+          <div>
+            <hr class="sig-sep" />
+            <div class="sig-row">
+              <div class="sig-block">
+                <div class="sig-space">
+                  <img class="sig-img" src="ahad_sign.png" alt="Md. Tahmidul Alam Ahad Signature" />
+                </div>
+                <div class="sig-name">Md. Tahmidul Alam Ahad</div>
+                <div class="sig-title">President</div>
               </div>
-              <div class="sig-name">Md. Matnul Hoque</div>
-              <div class="sig-title">General Secretary</div>
+              <div class="sig-block">
+                <div class="sig-space">
+                  <img class="sig-img" src="tareq_sign.png" alt="Mohammad Tareq Aziz Signature" />
+                </div>
+                <div class="sig-name">Mohammad Tareq Aziz</div>
+                <div class="sig-title">Vice President</div>
+              </div>
+              <div class="sig-block">
+                <div class="sig-space">
+                  <img class="sig-img" src="mainul_sign.png" alt="Md. Mainul Hoque Signature" />
+                </div>
+                <div class="sig-name">Md. Mainul Hoque</div>
+                <div class="sig-title">General Secretary</div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Vision / Mission -->
-        <div class="vm-strip">
-          <div class="vm-box">
-            <div class="vm-title">âš¡ VISION</div>
-            <div class="vm-content"><p>Learn. Innovate. Compete. Lead.</p></div>
+          <!-- Vision / Mission -->
+          <div class="vm-strip">
+            <div class="vm-box">
+              <div class="vm-title">âš¡ VISION</div>
+              <div class="vm-content">
+                <p>Learn. Innovate. Compete. Lead.</p>
+              </div>
+            </div>
+            <div class="vm-box">
+              <div class="vm-title">ðŸŽ¯ MISSION</div>
+              <div class="vm-content">
+                <p>Empowering students to learn through practice, innovate through technology, and create impact through
+                  collaboration.</p>
+              </div>
+            </div>
           </div>
-          <div class="vm-box">
-            <div class="vm-title">ðŸŽ¯ MISSION</div>
-            <div class="vm-content"><p>Empowering students to learn through practice, innovate through technology, and create impact through collaboration.</p></div>
-          </div>
-        </div>
 
-      </div><!-- /r-body -->
-    </div><!-- /receipt-inner -->
-  </div><!-- /receipt-section -->
+        </div><!-- /r-body -->
+      </div><!-- /receipt-inner -->
+    </div><!-- /receipt-section -->
 
-</div><!-- /page -->
+  </div><!-- /page -->
 
-<div class="print-btn-wrap" style="margin-top:22px; text-align:center;">
-  <button onclick="window.print()"
-    style="background:linear-gradient(90deg,#110022,#6600bb 40%,#dd00ff 70%,#00ccff);
+  <div class="print-btn-wrap" style="margin-top:22px; text-align:center;">
+    <button onclick="window.print()" style="background:linear-gradient(90deg,#110022,#6600bb 40%,#dd00ff 70%,#00ccff);
            color:#fff; border:none; padding:11px 38px;
            font-family:var(--f-tech); font-size:9.5pt; font-weight:700;
            letter-spacing:3px; cursor:pointer; border-radius:4px;
            box-shadow:0 0 24px rgba(220,0,255,0.6), 0 0 60px rgba(0,204,255,0.2), 0 4px 16px rgba(0,0,0,0.5);
            border:1px solid #cc00ee; position:relative; overflow:hidden;">
-    âš™&nbsp; PRINT / SAVE AS PDF
-  </button>
-  <p style="font-family:var(--f-mono); font-size:7.5pt; color:#cc88ff; margin-top:9px; letter-spacing:1px;">
-    [ PAPER: A4 ] &nbsp; [ MARGINS: NONE ] &nbsp; [ SCALE: 100% ] &nbsp; [ BG-GRAPHICS: ON ]
-  </p>
-</div>
+      âš™&nbsp; PRINT / SAVE AS PDF
+    </button>
+    <p style="font-family:var(--f-mono); font-size:7.5pt; color:#cc88ff; margin-top:9px; letter-spacing:1px;">
+      [ PAPER: A4 ] &nbsp; [ MARGINS: NONE ] &nbsp; [ SCALE: 100% ] &nbsp; [ BG-GRAPHICS: ON ]
+    </p>
+  </div>
 
 </body>
+
 </html>
